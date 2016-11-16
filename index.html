@@ -152,7 +152,7 @@
 
   <script id="cartList-template" type="text/x-handlebars-template">
     {{#each cartItem}}
-    <p>{{name}} (X{{quantity}}) - {{price}}</p> 
+    <p data-name="{{name}}">{{name}} ({{quantity}}) - ${{price}}<a href="#" class=" btn btn-danger remove-btn">Remove</a></p> 
     {{/each}}
     <p>Total: $<span class="total">{{total}}</span></p>
 </script>

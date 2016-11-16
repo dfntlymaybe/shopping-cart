@@ -13,6 +13,12 @@ var updateCart = function () {
   var newHtml = template(cartObj);
 
   $('.cart-list').append(newHtml);
+
+  $('.remove-btn').on('click', function(){
+  itemName = $(this).closest('p').attr("data-name");
+  removeItem(itemName);
+  updateCart();
+});
 }
 
 
@@ -30,6 +36,15 @@ var addItem = function (item) {
   } 
   cartObj.cartItem.push({name: name, price: price, quantity: 1});
   cartObj.total += Number(price);
+}
+
+var removeItem = function(itemName){
+  for(var i = 0; i < cartObj.cartItem.length; i++){
+    if(itemName == cartObj.cartItem[i].name){
+      cartObj.total -= Number(cartObj.cartItem[i].price);
+      cartObj.cartItem.splice(i, 1);
+    }
+  }
 }
 
 var clearCart = function () {
@@ -57,8 +72,11 @@ $('.add-to-cart').on('click', function () {
 });
 
 $('.clear-cart').on('click', function () {
+
   clearCart();
 });
+
+
 
 // update the cart as soon as the page loads!
 updateCart();
