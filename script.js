@@ -55,6 +55,32 @@ var clearCart = function () {
 
 }
 
+var addNewItem = function(item){
+
+  var source = $('#new-item-template').html();
+  var template = Handlebars.compile(source);
+  var newHtml = template(item);
+
+  $('.main-container').append(newHtml);
+
+  $('.add-to-cart').off();
+  $('.add-to-cart').on('click', function () {
+    // TODO: get the "item" object from the page
+    item =  $(this).closest('.item');
+    addItem(item);
+    updateCart();
+  });
+
+}
+
+var clearNewProductForm = function(){
+  $('#new-item-name').val('');
+  $('#new-item-price').val('');
+  $('#new-item-image').val('');
+};
+
+
+
 $('.view-cart').on('click', function () {
   // TODO: hide/show the shopping cart!
   if($('.shopping-cart').css('display') == 'none'){
@@ -72,10 +98,26 @@ $('.add-to-cart').on('click', function () {
 });
 
 $('.clear-cart').on('click', function () {
-
   clearCart();
 });
 
+$('.admin-panel-btn').on('click', function () {
+  $('.admin-panel').css('display', "block");
+});
+
+$('.close-admin-panel').on('click', function () {
+  $('.admin-panel').css('display', "none");
+});
+
+$('.add-new-item-button').on('click', function () {
+  var name = $('#new-item-name').val();
+  var price = $('#new-item-price').val();
+  var imageUrl = $('#new-item-image').val();
+  addNewItem({name: name, price: price, imageUrl: imageUrl});
+  clearNewProductForm();
+  $('.admin-panel').css('display', 'none');
+
+});
 
 
 // update the cart as soon as the page loads!

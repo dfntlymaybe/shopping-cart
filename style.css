@@ -107,3 +107,18 @@ body {
 .remove-btn{
   margin-left: 5px;
 }
+.admin-panel{
+  position: fixed;
+  top: 55px;
+  left: 5%;
+  display: none;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px #B3B3B3;
+  padding: 15px;
+  z-index: 999;
+  width: 90%;
+}
+
+.admin-panel-btn{
+  margin-left: 30px;
+}

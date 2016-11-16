@@ -36,17 +36,57 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+
+
   <div class="page-header">
     <h1>SHOPPING CART</h1>
   </div>
 
-  <div class="container">
+  <div>
+     <a href="#" class="btn btn-primary admin-panel-btn">Admin Panel</a>
+  </div>
+
+
+  <div class="container main-container">
     <div class="shopping-cart">
       <p class="cart-title">Items in Cart</p>
       <div class="cart-list"></div>
       <button class="btn clear-cart">Clear Cart</button>
     </div>
 
+    
+
+    <div class="container">  
+      <div class="admin-panel">
+
+        <a href="#" class="pull-right close-admin-panel"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+        
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+
+            <div class="page-header">
+              <h1>Admin Panel</h1>
+            </div>
+
+            <form class="new-item-form">
+              <h3>Add New Item</h3>
+
+              <div class="form-group">
+                <input type="text" id="new-item-name" class="form-control" placeholder="Item Name">
+              </div>
+              <div class="form-group">
+                <input type="text" id="new-item-price" class="form-control" placeholder="Item Price">
+              </div>
+              <div class="form-group">
+                <input type="text" id="new-item-image" class="form-control" placeholder="Item Image URL">
+              </div>
+
+              <button class="btn btn-primary add-new-item-button">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-md-4">
@@ -96,9 +136,8 @@
           </div>
         </div>
       </div>
-
-    
     </div>
+
     <div class="row">
       <div class="col-md-4">
         <div class="card-container">
@@ -152,12 +191,29 @@
 
   <script id="cartList-template" type="text/x-handlebars-template">
     {{#each cartItem}}
-    <p data-name="{{name}}">{{name}} ({{quantity}}) - ${{price}}<a href="#" class=" btn btn-danger remove-btn">Remove</a></p> 
+    <p data-name="{{name}}">{{name}} ({{quantity}}) - ${{price}}<a href="#" class="remove-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></a></p> 
     {{/each}}
     <p>Total: $<span class="total">{{total}}</span></p>
-</script>
+  </script>
 
-<div class="menu">
+  <script id="new-item-template" type="text/x-handlebars-template">
+    <div class="col-md-4">
+        <div class="card-container">
+          <div class="card item" item data-name="{{name}}" data-price="{{price}}">
+            <div class="pricebox">
+              <p class="price"> ${{price}} </p>
+            </div>
+            <div class="buybox">
+              <p class="add-to-cart"> ADD TO CART </p>
+            </div>
+            <div class="card-inner">
+              <img src="{{imageUrl}}" class="proimage">
+            </div>
+          </div>
+        </div>
+      </div>
+  </script>
+
 
 
   <script type="text/javascript" src="script.js"></script>
